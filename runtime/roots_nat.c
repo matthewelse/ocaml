@@ -285,7 +285,7 @@ void caml_oldify_local_roots (void)
       /* Find the descriptor corresponding to the return address */
       h = Hash_retaddr(retaddr);
       while(1) {
-        d = caml_frame_descriptors[h];
+        d = caml_frame_descriptors[h]; // melse: segfaulting
         if (d->retaddr == retaddr) break;
         h = (h+1) & caml_frame_descriptors_mask;
       }
